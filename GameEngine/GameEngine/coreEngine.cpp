@@ -11,6 +11,7 @@ CoreEngine::CoreEngine(std::string title, int width, int height) : title(title),
 CoreEngine::~CoreEngine()
 {
 	delete mainWindow;
+	delete clock;
 }
 
 
@@ -18,7 +19,7 @@ CoreEngine::~CoreEngine()
 void CoreEngine::start() {
 	if (!isRunning)
 		return;
-
+	clock = new Time();
 	run();
 }
 
@@ -29,6 +30,9 @@ void CoreEngine::render() {
 
 //game loop
 void CoreEngine::run() {
+	isRunning = true;
+
+	long lastTime = clock->elapsed();
 	while (isRunning) {
 		if (mainWindow->isClosed())
 			stop();
