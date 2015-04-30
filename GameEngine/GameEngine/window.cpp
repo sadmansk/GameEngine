@@ -54,7 +54,22 @@ void Window::update() {
 
 	while (SDL_PollEvent(&e)) {
 		if (e.type == SDL_QUIT){
-			m_isClosed = true;
+			stop();
 		}
 	}
+}
+
+void Window::start() {
+	run();
+}
+
+void Window::run() {
+	while (!m_isClosed) {
+		clear(1.0f, 1.0f, 1.0f, 1.0f);
+		update();
+	}
+
+}
+void Window::stop() {
+	m_isClosed = true;
 }
