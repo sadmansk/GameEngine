@@ -73,7 +73,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="coreEngine.h" />
-    <ClInclude Include="time.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
