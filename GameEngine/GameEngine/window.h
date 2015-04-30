@@ -9,13 +9,8 @@ public:
 	
 	//class functions
 	void clear(float r, float g, float b, float a);
-	void update();
-	void start();
-	void run();
-	void stop();
 	inline bool isClosed() { return m_isClosed;	}
-	inline int getWidth() { return width; }
-	inline int getHeight() { return height; }
+	void update();
 
 	//dtor
 	virtual ~Window();
@@ -24,6 +19,4 @@ private:
 	SDL_Window* m_window;
 	SDL_GLContext m_context;
 	bool m_isClosed;
-	int width, height;
-	const std::string title;
 };

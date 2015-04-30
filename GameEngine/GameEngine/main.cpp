@@ -1,18 +1,12 @@
 #include <iostream>
-#include "window.h"
-
-#define WIDTH 1280
-#define HEIGHT 700
-#define TITLE "GameEngine"
-
-
+#include "coreEngine.h"
 
 //main program
 int main(int argc, char* argv[]) {
-	Window MainWindow (TITLE, WIDTH, HEIGHT);
+	CoreEngine game (TITLE, WIDTH, HEIGHT);
 
 	//main loop
-	MainWindow.start();
+	game.start();
 
 	return 0;
 }

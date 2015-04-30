@@ -72,9 +72,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="coreEngine.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="coreEngine.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

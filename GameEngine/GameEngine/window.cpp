@@ -4,7 +4,7 @@
 #include <cassert>
 
 //ctor
-Window::Window(const std::string title, int width, int height) : title(title), width(width), height(height)
+Window::Window(const std::string title, int width, int height)
 {
 	assert(height > 0 && width > 0);
 	
@@ -54,22 +54,7 @@ void Window::update() {
 
 	while (SDL_PollEvent(&e)) {
 		if (e.type == SDL_QUIT){
-			stop();
+			m_isClosed = true;
 		}
 	}
-}
-
-void Window::start() {
-	run();
-}
-
-void Window::run() {
-	while (!m_isClosed) {
-		clear(1.0f, 1.0f, 1.0f, 1.0f);
-		update();
-	}
-
-}
-void Window::stop() {
-	m_isClosed = true;
 }
