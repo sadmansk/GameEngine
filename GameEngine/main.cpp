@@ -20,6 +20,7 @@ GNU General Public License for more details.
 int main(int argc, char* argv[]) {
 	CoreEngine game (TITLE, WIDTH, HEIGHT);
 
+
 	//main loop
 	game.start();
 

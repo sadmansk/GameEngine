@@ -13,25 +13,13 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#include <string>
-#include <sdl\SDL.h>
-
-class Window
+class Input
 {
 public:
-	//ctor
-	Window(const std::string title, int width, int height);
-	
-	//class functions
-	void clear(float r, float g, float b, float a);
-	inline bool isClosed() { return m_isClosed;	}
-	void update();
+	Input();
 
-	//dtor
-	virtual ~Window();
+	bool getKey(int keyCode);
 
-private:
-	SDL_Window* m_window;
-	SDL_GLContext m_context;
-	bool m_isClosed;
+	virtual ~Input();
 };
+

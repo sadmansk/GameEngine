@@ -13,25 +13,26 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#include <string>
-#include <sdl\SDL.h>
+#include "game.h"
 
-class Window
+
+Game::Game()
 {
-public:
-	//ctor
-	Window(const std::string title, int width, int height);
-	
-	//class functions
-	void clear(float r, float g, float b, float a);
-	inline bool isClosed() { return m_isClosed;	}
-	void update();
+}
 
-	//dtor
-	virtual ~Window();
 
-private:
-	SDL_Window* m_window;
-	SDL_GLContext m_context;
-	bool m_isClosed;
-};
+Game::~Game()
+{
+}
+
+void Game::input() {
+
+}
+
+void Game::render() {
+
+}
+
+void Game::update() {
+
+}

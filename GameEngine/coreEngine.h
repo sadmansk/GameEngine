@@ -16,6 +16,7 @@ GNU General Public License for more details.
 #include <string>
 #include "window.h"
 #include "time.h"
+#include "game.h"
 
 #define WIDTH 1280
 #define HEIGHT 700
@@ -37,7 +38,8 @@ private:
 	int width, height;
 	const std::string title;
 	bool isRunning;
-	Time* clock;
+	Game* game;
+
 	void run();
 	void render();
 };

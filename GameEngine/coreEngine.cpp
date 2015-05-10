@@ -14,10 +14,13 @@ GNU General Public License for more details.
 */
 
 #include "coreEngine.h"
+#include <windows.h>
+#include <iostream>
 
 CoreEngine::CoreEngine(std::string title, int width, int height) : title(title), width(width), height(height)
 {
 	mainWindow = new Window(title, width, height);
+	game = new Game();
 
 	isRunning = true;
 }
@@ -26,15 +29,20 @@ CoreEngine::CoreEngine(std::string title, int width, int height) : title(title),
 CoreEngine::~CoreEngine()
 {
 	delete mainWindow;
-	delete clock;
+	//delete clock;
+	delete game;
 }
 
 
 
 void CoreEngine::start() {
-	if (!isRunning)
+	std::cout << "Core engine started." << std::endl;
+	if (!isRunning) {
+		std::cout << "Core engine closing." << std::endl;
 		return;
-	clock = new Time();
+	}
+
+	Time::reset();
 	run();
 }
 
@@ -46,12 +54,55 @@ void CoreEngine::render() {
 //game loop
 void CoreEngine::run() {
 	isRunning = true;
+	std::cout << "Engine starting...";
 
-	long lastTime = clock->elapsed();
+	int frames = 0;
+	long frameCounter = 0;
+
+	double frameTime = 1.0 / FRAME_CAP;
+
+	//lastTime before running the game loop
+	long long lastTime = Time::elapsed();
+	double unprocessedTime = 0;
+
 	while (isRunning) {
-		if (mainWindow->isClosed())
-			stop();
-		render();
+		bool render = false;
+		long long startTime = Time::elapsed();
+		long long passedTime = startTime - lastTime;
+		lastTime = startTime;
+
+		unprocessedTime += (double)passedTime/SECOND; //store the time in seconds
+		frameCounter += passedTime; //store the time in nanoseconds
+
+		//update the time when the loop has run for frame time seconds
+		while (unprocessedTime > frameTime) {
+			render = true;
+			unprocessedTime -= frameTime;
+
+			if (mainWindow->isClosed())
+				stop();
+
+			Time::setDelta(frameTime);
+
+			//update the game here
+			game->input(); //process the inputs
+			game->update(); //update game values
+
+			//display the frame count every second
+			if (frameCounter >= SECOND) {
+				std::cout << frames << std::endl;
+				frames = 0;
+				frameCounter = 0;
+			}
+		}
+
+		if (render) {
+			this->render();
+			game->render();
+			frames++;
+		}
+		else
+			Sleep(1); //delay the loop so that calculations are not made too often
 	}
 
 }

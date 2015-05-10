@@ -16,27 +16,30 @@ GNU General Public License for more details.
 #include <ctime>
 #include <chrono>
 
-static class Time
+#define SECOND 1000000000
+
+
+typedef std::chrono::high_resolution_clock clock_;
+
+class Time
 {
 public:
-	inline Time() : beg_(clock_::now()) {}
-	void reset() { beg_ = clock_::now(); }
 
-	double elapsed() const {
-		return std::chrono::duration_cast<second_>
-			(clock_::now() - beg_).count();
+	inline Time() {}
+
+	inline static void reset() { beg_ = clock_::now(); }
+
+	inline static long long elapsed() {
+		return std::chrono::duration_cast<std::chrono::nanoseconds>(clock_::now() - beg_).count();
 	}
 
 
-	inline static void setDelta(double newDelta) { delta = newDelta; };
-	inline static double getDelta() { return delta; }
+	static inline void setDelta(double newDelta) { Time::delta = newDelta; };
+	static inline double getDelta() { return Time::delta; }
 
-	virtual ~Time();
+	inline virtual ~Time() {}
 
 private:
-	typedef std::chrono::high_resolution_clock clock_;
-	typedef std::chrono::duration<double, std::ratio<1> > second_;
-	std::chrono::time_point<clock_> beg_;
-
+	static std::chrono::time_point<clock_> beg_; //save the starting time
 	static double delta;
 };
