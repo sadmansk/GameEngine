@@ -1,10 +1,8 @@
 # GameEngine
 A test game engine with C++ and OpenGL.
 
-###Tools:
-<strong>IDE: </strong>Visual Studio 2013  
-<strong>Libraries: </strong>GL Mathematics, GLEW, Simple Directmedia Library.  
-<strong>Languages: </strong>C, C++, OpenGL Shader Language.
+###Documentation:
+Refer to the [wiki](https://github.com/sadmansk/GameEngine/wiki) for more information.
 
 ###License:
 <code>A test game engine with C++ and OpenGL
