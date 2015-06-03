@@ -12,14 +12,21 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
+#include <sdl/SDL.h> //required for getting the keyboard inputs
+#include <vector>
 
 class Input
 {
 public:
 	Input();
 
-	bool getKey(int keyCode);
-
+	void update(SDL_Event* e); //update the list of keys
+	bool getKey(int keyCode); //check whether a specific key is pressed
+	
 	virtual ~Input();
+
+private:
+	std::vector<SDL_Keycode> currentKeys; //store the keys pressed down in the current frame
+	std::vector<SDL_Keycode> downKeys; //store the keys pressed down from the previous frame
 };
 

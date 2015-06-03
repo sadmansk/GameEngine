@@ -71,5 +71,10 @@ void Window::update() {
 		if (e.type == SDL_QUIT){
 			m_isClosed = true;
 		}
+		//else send the input to the input class
+		else
+		{
+			inputHandler->update(&e);
+		}
 	}
 }

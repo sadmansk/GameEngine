@@ -14,7 +14,7 @@ GNU General Public License for more details.
 */
 
 #include "input.h"
-
+#include <stdlib.h>
 
 Input::Input()
 {
@@ -24,6 +24,15 @@ Input::~Input()
 {
 }
 
+void Input::update(SDL_Event* e) {
+	//translate the key status of the pressed into an into a SDL_Keysym
+	SDL_Keysym keyEvent = e->key.keysym;
+
+	//check whether the event is a key pressed down and then check whether its in the list of the current keys
+	if (std::find(currentKeys.begin(), currentKeys.end(), keyEvent.sym) != currentKeys.end()) {
+
+	}
+}
 bool Input::getKey(int keyCode) {
-	return true;
+	return ;
 }
