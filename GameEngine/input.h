@@ -18,15 +18,18 @@ GNU General Public License for more details.
 class Input
 {
 public:
-	Input();
+	inline Input() {};
 
-	void update(SDL_Event* e); //update the list of keys
-	bool getKey(int keyCode); //check whether a specific key is pressed
+	static void update(SDL_Event* e); //update the list of keys
+	static bool getKey(SDL_Keycode key); //check whether a specific key is pressed
+	static bool getKeyDown(SDL_Keycode key);
+	static bool getKeyUp(SDL_Keycode key);
 	
-	virtual ~Input();
+	virtual ~Input() {};
 
 private:
-	std::vector<SDL_Keycode> currentKeys; //store the keys pressed down in the current frame
-	std::vector<SDL_Keycode> downKeys; //store the keys pressed down from the previous frame
+	static std::vector<SDL_Keycode> currentKeys; //store the keys pressed down
+	static std::vector<SDL_Keycode> downKeys; //store the keys pressed in the current frame
+	static std::vector<SDL_Keycode> upKeys; //store the keys released in the current frame
 };
 

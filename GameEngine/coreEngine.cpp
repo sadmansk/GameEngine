@@ -97,7 +97,7 @@ void CoreEngine::run() {
 		}
 
 		if (render) {
-			//this->render();
+			this->render();
 			game->render();
 			frames++;
 		}

@@ -22,9 +22,9 @@ GNU General Public License for more details.
 Window::Window(const std::string title, int width, int height)
 {
 	assert(height > 0 && width > 0);
-	
+
 	SDL_Init(SDL_INIT_EVERYTHING);
-	
+
 	//set the space for colour buffers
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
@@ -66,15 +66,16 @@ void Window::update() {
 	SDL_GL_SwapWindow(m_window);
 
 	SDL_Event e;
-
-	while (SDL_PollEvent(&e)) {
+	if (SDL_PollEvent(&e)) {
 		if (e.type == SDL_QUIT){
 			m_isClosed = true;
 		}
 		//else send the input to the input class
 		else
 		{
-			inputHandler->update(&e);
+			Input::update(&e);
 		}
 	}
+	else
+		Input::update(NULL);
 }

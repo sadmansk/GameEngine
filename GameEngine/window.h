@@ -35,5 +35,4 @@ private:
 	SDL_Window* m_window;
 	SDL_GLContext m_context;
 	bool m_isClosed;
-	Input *inputHandler;
 };

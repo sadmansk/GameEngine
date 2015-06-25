@@ -14,7 +14,8 @@ GNU General Public License for more details.
 */
 
 #include "game.h"
-
+#include "input.h"
+#include <iostream>
 
 Game::Game()
 {
@@ -26,7 +27,12 @@ Game::~Game()
 }
 
 void Game::input() {
-
+	if (Input::getKeyDown(SDLK_UP)) {
+		std::cout << "You have pressed up!" << std::endl;
+	}
+	else if (Input::getKeyUp(SDLK_UP)) {
+		std::cout << "You have released up!" << std::endl;
+	}
 }
 
 void Game::render() {
