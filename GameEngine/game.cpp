@@ -27,15 +27,22 @@ Game::~Game()
 }
 
 void Game::input() {
+}
+
+void Game::render() {
 	if (Input::getKeyDown(SDLK_UP)) {
 		std::cout << "You have pressed up!" << std::endl;
 	}
 	else if (Input::getKeyUp(SDLK_UP)) {
 		std::cout << "You have released up!" << std::endl;
 	}
-}
 
-void Game::render() {
+	if (Input::getMouseDown(SDL_BUTTON_LEFT)) {
+		std::cout << "You left clicked!" << std::endl;
+	}
+	else if (Input::getMouseUp(SDL_BUTTON_LEFT)) {
+		std::cout << "You released the left mouse button!" << std::endl;
+	}
 
 }
 
