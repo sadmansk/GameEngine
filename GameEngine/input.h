@@ -14,6 +14,7 @@ GNU General Public License for more details.
 */
 #include <sdl/SDL.h> //required for getting the keyboard inputs
 #include <vector>
+#include <glm/glm.hpp>
 
 class Input
 {
@@ -27,6 +28,7 @@ public:
 	static bool getMouse(Uint8 button); //check whether a specific key is pressed
 	static bool getMouseDown(Uint8 button);
 	static bool getMouseUp(Uint8 button);
+	static glm::vec2 getMousePos();
 	
 	virtual ~Input() {};
 

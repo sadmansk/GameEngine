@@ -108,3 +108,9 @@ bool Input::getMouseDown(Uint8 button) {
 bool Input::getMouseUp(Uint8 button) {
 	return contains(upMouse, button);
 }
+
+glm::vec2 Input::getMousePos() { //TODO: might consider switching to a custom vector class
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+	return glm::vec2(x, y);
+}

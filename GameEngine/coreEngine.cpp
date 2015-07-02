@@ -29,7 +29,6 @@ CoreEngine::CoreEngine(std::string title, int width, int height) : title(title),
 CoreEngine::~CoreEngine()
 {
 	delete mainWindow;
-	//delete clock;
 	delete game;
 }
 
