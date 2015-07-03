@@ -38,7 +38,7 @@ void Game::render() {
 	}
 
 	if (Input::getMouseDown(SDL_BUTTON_LEFT)) {
-		std::cout << "You left clicked!" << std::endl;
+		std::cout << "Mouse x: " << Input::getMousePos().x << " Mouse y: " << Input::getMousePos().y << std::endl;
 	}
 	else if (Input::getMouseUp(SDL_BUTTON_LEFT)) {
 		std::cout << "You released the left mouse button!" << std::endl;

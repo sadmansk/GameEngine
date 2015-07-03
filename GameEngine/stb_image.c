@@ -297,7 +297,8 @@ static unsigned char *stbi_load_main(stbi *s, int *x, int *y, int *comp, int req
 #ifndef STBI_NO_STDIO
 unsigned char *stbi_load(char const *filename, int *x, int *y, int *comp, int req_comp)
 {
-	FILE *f = fopen(filename, "rb");
+	FILE *f;
+	fopen_s(&f, filename, "rb");
 	unsigned char *result;
 	if (!f) return epuc("can't fopen", "Unable to open file");
 	result = stbi_load_from_file(f, x, y, comp, req_comp);
@@ -359,7 +360,8 @@ float *stbi_loadf_from_callbacks(stbi_io_callbacks const *clbk, void *user, int 
 #ifndef STBI_NO_STDIO
 float *stbi_loadf(char const *filename, int *x, int *y, int *comp, int req_comp)
 {
-	FILE *f = fopen(filename, "rb");
+	FILE *f;
+	fopen_s(&f,filename, "rb");
 	float *result;
 	if (!f) return epf("can't fopen", "Unable to open file");
 	result = stbi_loadf_from_file(f, x, y, comp, req_comp);
@@ -397,7 +399,8 @@ int stbi_is_hdr_from_memory(stbi_uc const *buffer, int len)
 #ifndef STBI_NO_STDIO
 extern int      stbi_is_hdr(char const *filename)
 {
-	FILE *f = fopen(filename, "rb");
+	FILE *f;
+	fopen_s(&f, filename, "rb");
 	int result = 0;
 	if (f) {
 		result = stbi_is_hdr_from_file(f);
@@ -4351,7 +4354,8 @@ static int stbi_info_main(stbi *s, int *x, int *y, int *comp)
 #ifndef STBI_NO_STDIO
 int stbi_info(char const *filename, int *x, int *y, int *comp)
 {
-	FILE *f = fopen(filename, "rb");
+	FILE *f;
+	fopen_s(&f, filename, "rb");
 	int result;
 	if (!f) return e("can't fopen", "Unable to open file");
 	result = stbi_info_from_file(f, x, y, comp);
