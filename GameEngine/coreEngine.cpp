@@ -47,6 +47,8 @@ void CoreEngine::start() {
 }
 
 void CoreEngine::render() {
+	Window::clear(1.0f, 1.0f, 1.0f, 1.0f);
+	game->render();
 	mainWindow->update();
 }
 
@@ -96,8 +98,6 @@ void CoreEngine::run() {
 		}
 
 		if (render) {
-			Window::clear(1.0f, 1.0f, 1.0f, 1.0f);
-			game->render();
 			this->render();
 			frames++;
 		}
