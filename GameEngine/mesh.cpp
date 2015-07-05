@@ -11,8 +11,8 @@ Mesh::Mesh(Vertex* vertices, unsigned int numVertices)
 
 	//writing it to the GPU using buffers
 	glGenBuffers(NUM_BUFFERS, m_vertexArrayBuffers);
-	glBindBuffer(GL_ARRAY_BUFFER, m_vertexArrayBuffers[POSITION_BUFFER]);
-	glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof(vertices[0]), &vertices[0], GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, m_vertexArrayBuffers[POSITION_VB]);
+	glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof(vertices[0]), vertices, GL_STATIC_DRAW);
 
 	//assigning the data a location in the GPU memory
 	glEnableVertexAttribArray(0);
@@ -24,8 +24,8 @@ Mesh::Mesh(Vertex* vertices, unsigned int numVertices)
 void Mesh::draw() {
 	glBindVertexArray(m_vertexArrayObject);
 
-	glDrawElements(GL_TRIANGLES, m_drawCount, GL_UNSIGNED_INT, 0);
-
+	glDrawArrays(GL_TRIANGLES, 0, m_drawCount);
+	
 	glBindVertexArray(0);
 }
 

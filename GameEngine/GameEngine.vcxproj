@@ -74,6 +74,9 @@
   <ItemGroup>
     <ClInclude Include="coreEngine.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="mesh.h" />
+    <ClInclude Include="shader.h" />
+    <ClInclude Include="vertex.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="time.h" />
     <ClInclude Include="window.h" />
@@ -82,6 +85,8 @@
     <ClCompile Include="coreEngine.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="input.cpp" />
+    <ClCompile Include="mesh.cpp" />
+    <ClCompile Include="shader.cpp" />
     <ClCompile Include="time.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="main.cpp" />

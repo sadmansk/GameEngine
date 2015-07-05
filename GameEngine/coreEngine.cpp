@@ -20,6 +20,7 @@ GNU General Public License for more details.
 CoreEngine::CoreEngine(std::string title, int width, int height) : title(title), width(width), height(height)
 {
 	mainWindow = new Window(title, width, height);
+	Window::initGraphics();
 	game = new Game();
 
 	isRunning = true;
@@ -29,7 +30,6 @@ CoreEngine::CoreEngine(std::string title, int width, int height) : title(title),
 CoreEngine::~CoreEngine()
 {
 	delete mainWindow;
-	//delete clock;
 	delete game;
 }
 
@@ -47,7 +47,6 @@ void CoreEngine::start() {
 }
 
 void CoreEngine::render() {
-	mainWindow->clear(1.0f, 1.0f, 1.0f, 1.0f);
 	mainWindow->update();
 }
 
@@ -97,8 +96,9 @@ void CoreEngine::run() {
 		}
 
 		if (render) {
-			this->render();
+			Window::clear(1.0f, 1.0f, 1.0f, 1.0f);
 			game->render();
+			this->render();
 			frames++;
 		}
 		else

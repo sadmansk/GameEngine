@@ -19,17 +19,28 @@ GNU General Public License for more details.
 
 Game::Game()
 {
+	Vertex data[] = { Vertex(glm::vec3(-0.5, -0.5, 0)),
+		Vertex(glm::vec3(0, 0.5, 0)),
+		Vertex(glm::vec3(0.5, -0.5, 0)) };
+
+	shader = new Shader("./res/basicShader");
+
+	mesh = new Mesh(data, sizeof(data)/sizeof(data[0]));
 }
 
 
 Game::~Game()
 {
+	delete mesh;
+	delete shader;
 }
 
 void Game::input() {
 }
 
 void Game::render() {
+	shader->bind();
+	mesh->draw();
 	if (Input::getKeyDown(SDLK_UP)) {
 		std::cout << "You have pressed up!" << std::endl;
 	}
@@ -46,5 +57,4 @@ void Game::render() {
 }
 
 void Game::update() {
-
 }

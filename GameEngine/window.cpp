@@ -31,7 +31,7 @@ Window::Window(const std::string title, int width, int height)
 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE, 32);
-
+	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 	m_window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL);
@@ -55,10 +55,24 @@ Window::~Window()
 }
 
 void Window::clear(float r, float g, float b, float a) {
-	//set the clearing colour
-	glClearColor(r, g, b, a);
 	//clear the screen with the selected colour
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void Window::initGraphics() {
+	//set the clearing colour
+	glClearColor(1.0f, 1.0f, 0.0f, 0.0f);
+
+	//enable back face culling
+	glFrontFace(GL_CW);
+	glCullFace(GL_BACK);
+	glEnable(GL_CULL_FACE);
+
+	//gpu will know which vertex is at the top (z value)
+	glEnable(GL_DEPTH_TEST);
+
+	//for gamma correction
+	glEnable(GL_FRAMEBUFFER_SRGB);
 }
 
 //update the buffer and update m_isClosed when applicable
