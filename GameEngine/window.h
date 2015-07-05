@@ -24,8 +24,8 @@ public:
 	Window(const std::string title, int width, int height);
 	
 	//class functions
-	static void clear(float r, float g, float b, float a);
-	static void initGraphics();
+	static void clear();
+	static void initGraphics(float r, float g, float b, float a);
 	inline bool isClosed() { return m_isClosed;	}
 	void update();
 

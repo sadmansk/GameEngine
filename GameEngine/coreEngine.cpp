@@ -20,7 +20,7 @@ GNU General Public License for more details.
 CoreEngine::CoreEngine(std::string title, int width, int height) : title(title), width(width), height(height)
 {
 	mainWindow = new Window(title, width, height);
-	Window::initGraphics();
+	Window::initGraphics(0.0f, 0.0f, 0.0f, 0.0f);
 	game = new Game();
 
 	isRunning = true;
@@ -47,7 +47,7 @@ void CoreEngine::start() {
 }
 
 void CoreEngine::render() {
-	Window::clear(1.0f, 1.0f, 1.0f, 1.0f);
+	Window::clear();
 	game->render();
 	mainWindow->update();
 }

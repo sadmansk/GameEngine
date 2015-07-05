@@ -54,14 +54,14 @@ Window::~Window()
 	SDL_Quit();
 }
 
-void Window::clear(float r, float g, float b, float a) {
+void Window::clear() {
 	//clear the screen with the selected colour
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Window::initGraphics() {
+void Window::initGraphics(float r, float g, float b, float a) {
 	//set the clearing colour
-	glClearColor(1.0f, 1.0f, 0.0f, 0.0f);
+	glClearColor(r, g, b, a);
 
 	//enable back face culling
 	glFrontFace(GL_CW);
