@@ -35,6 +35,32 @@ Shader::~Shader()
 	glDeleteProgram(m_program);
 }
 
+void Shader::addUniform(const std::string& uniform) {
+	int uniformLocation = glGetUniformLocation(m_program, uniform.c_str());
+
+	if (uniformLocation < 0) {
+		std::cerr << "Error: Could not find uniform " << uniform << std::endl;
+	}
+
+	//once we know that the uniform exists, add it to the hash map
+	uniforms.insert({ uniform, uniformLocation });
+}
+
+void Shader::setUniformI(const std::string& name, int value) {
+	glUniform1i(uniforms.at(name), value);
+}
+void Shader::setUniformF(const std::string& name, float value) {
+	glUniform1f(uniforms.at(name), value);
+}
+
+void Shader::setUniformMat4(const std::string& name, const glm::mat4& value) {
+	glUniformMatrix4fv(uniforms.at(name), 1, GL_FALSE, glm::value_ptr(value));
+}
+
+void Shader::setUniformVec3(const std::string& name, const glm::vec3& value) {
+	glUniform3f(uniforms.at(name), value.x, value.y, value.z);
+}
+
 void Shader::bind() {
 	glUseProgram(m_program);
 }

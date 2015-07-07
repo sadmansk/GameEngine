@@ -29,5 +29,6 @@ public:
 private:
 	Mesh* mesh;
 	Shader* shader;
+	float temp;
 };
 

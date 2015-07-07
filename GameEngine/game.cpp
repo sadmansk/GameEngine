@@ -16,6 +16,7 @@ GNU General Public License for more details.
 #include "game.h"
 #include "input.h"
 #include <iostream>
+#include "time.h"
 
 Game::Game()
 {
@@ -26,6 +27,9 @@ Game::Game()
 	shader = new Shader("./res/basicShader");
 
 	mesh = new Mesh(data, sizeof(data)/sizeof(data[0]));
+
+	shader->addUniform("uniformFloat");
+	temp = 0;
 }
 
 
@@ -57,4 +61,6 @@ void Game::render() {
 }
 
 void Game::update() {
+	temp += Time::getDelta();
+	shader->setUniformF("uniformFloat", (float)abs(sinf(temp)));
 }
