@@ -14,6 +14,7 @@ GNU General Public License for more details.
 */
 #include "mesh.h"
 #include "shader.h"
+#include "transform.h"
 
 class Game
 {
@@ -29,6 +30,7 @@ public:
 private:
 	Mesh* mesh;
 	Shader* shader;
-	float temp;
+	Transform* transform;
+	float counter;
 };
 

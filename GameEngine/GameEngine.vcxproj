@@ -76,6 +76,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="transform.h" />
     <ClInclude Include="vertex.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="time.h" />

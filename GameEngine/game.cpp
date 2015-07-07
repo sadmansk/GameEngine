@@ -28,8 +28,10 @@ Game::Game()
 
 	mesh = new Mesh(data, sizeof(data)/sizeof(data[0]));
 
-	shader->addUniform("uniformFloat");
-	temp = 0;
+	transform = new Transform();
+
+	shader->addUniform("transform");
+	counter = 0;
 }
 
 
@@ -61,6 +63,14 @@ void Game::render() {
 }
 
 void Game::update() {
-	temp += Time::getDelta();
-	shader->setUniformF("uniformFloat", (float)abs(sinf(temp)));
+	counter += Time::getDelta();
+	//std::cout << counter << std::endl;
+	float sinCounter = sinf(counter);
+	float absSinCounter = abs(sinCounter);
+
+	transform->GetPos().x = sinCounter;
+	transform->GetRot().y = sinCounter;
+	transform->GetRot().z = sinCounter;
+
+	shader->setUniformMat4("transform", transform->GetModel());
 }
