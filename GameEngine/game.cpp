@@ -22,11 +22,17 @@ Game::Game()
 {
 	Vertex data[] = { Vertex(glm::vec3(-0.5, -0.5, 0)),
 		Vertex(glm::vec3(0, 0.5, 0)),
-		Vertex(glm::vec3(0.5, -0.5, 0)) };
+		Vertex(glm::vec3(0.5, -0.5, 0)),
+		Vertex(glm::vec3(0, -0.5, 0.5))};
+	
+	unsigned int indices[] = {0, 1, 3,
+							3, 1, 2,
+							2, 1, 0,
+							0, 2, 3};
 
 	shader = new Shader("./res/basicShader");
 
-	mesh = new Mesh(data, sizeof(data)/sizeof(data[0]));
+	mesh = new Mesh(data, sizeof(data)/sizeof(data[0]), indices, sizeof(indices)/sizeof(indices[0]));
 
 	transform = new Transform();
 

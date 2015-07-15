@@ -19,13 +19,14 @@ GNU General Public License for more details.
 class Mesh
 {
 public:
-	Mesh(Vertex* vertices, unsigned int numVertices);
+	Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices);
 	void draw();
 	~Mesh();
 
 private:
 	enum {
 		POSITION_VB,
+		INDEX_VB,
 
 		NUM_BUFFERS
 	};
