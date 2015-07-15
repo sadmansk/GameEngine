@@ -37,6 +37,8 @@ Game::Game()
 	mesh = new Mesh("./res/monkeyNoUV.obj");
 	transform = new Transform();
 
+	transform->SetScale(glm::vec3(0.5f, 0.5f, 0.5f));
+
 	shader->addUniform("transform");
 	counter = 0;
 }
@@ -72,12 +74,12 @@ void Game::render() {
 void Game::update() {
 	counter += Time::getDelta();
 	//std::cout << counter << std::endl;
-	float sinCounter = sinf(counter);
+	float sinCounter = counter;
 	float absSinCounter = abs(sinCounter);
 
-	transform->GetPos().x = sinCounter;
+	//transform->GetPos().x = sinCounter;
 	transform->GetRot().y = sinCounter;
-	transform->GetRot().z = sinCounter;
+	//transform->GetRot().z = sinCounter;
 
 	shader->setUniformMat4("transform", transform->GetModel());
 }

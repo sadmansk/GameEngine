@@ -7,6 +7,6 @@ out vec4 color;
 uniform mat4 transform;
 
 void main () {
-	gl_Position =  transform * vec4(1.5*position, 1.0);
+	gl_Position =  transform * vec4(position, 1.0);
 	color = clamp(gl_Position, 0.0, 1.0);
 }
