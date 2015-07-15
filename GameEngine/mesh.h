@@ -12,14 +12,18 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
+#ifndef MESH_H
+#define MESH_H
 
 #include "vertex.h"
 #include <glew/glew.h>
+#include "obj_loader.h"
 
 class Mesh
 {
 public:
 	Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices);
+	Mesh(const std::string& fileName);
 	void draw();
 	~Mesh();
 
@@ -31,8 +35,11 @@ private:
 		NUM_BUFFERS
 	};
 
+	void InitMesh(const IndexedModel& model);
+
 	GLuint m_vertexArrayObject;
 	GLuint m_vertexArrayBuffers[NUM_BUFFERS];
 	unsigned int m_drawCount; //stores how big it is, how much we want to draw
 };
 
+#endif MESH_H

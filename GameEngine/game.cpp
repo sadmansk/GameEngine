@@ -32,8 +32,9 @@ Game::Game()
 
 	shader = new Shader("./res/basicShader");
 
-	mesh = new Mesh(data, sizeof(data)/sizeof(data[0]), indices, sizeof(indices)/sizeof(indices[0]));
+	//mesh = new Mesh(data, sizeof(data)/sizeof(data[0]), indices, sizeof(indices)/sizeof(indices[0]));
 
+	mesh = new Mesh("./res/monkeyNoUV.obj");
 	transform = new Transform();
 
 	shader->addUniform("transform");
