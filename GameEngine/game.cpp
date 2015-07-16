@@ -61,6 +61,7 @@ void Game::render() {
 	m_mesh->draw();
 	if (Input::getKeyDown(SDLK_UP)) {
 		std::cout << "You have pressed up!" << std::endl;
+		m_camera->translate(glm::vec3(0.0f, 0.0f, 0.1f));
 	}
 	else if (Input::getKeyUp(SDLK_UP)) {
 		std::cout << "You have released up!" << std::endl;
