@@ -15,6 +15,12 @@ GNU General Public License for more details.
 #include "mesh.h"
 #include "shader.h"
 #include "transform.h"
+#include "camera.h"
+
+#define WIDTH 1280
+#define HEIGHT 700
+#define TITLE "Game Engine"
+#define FRAME_CAP 5000.0f
 
 class Game
 {
@@ -28,9 +34,10 @@ public:
 	virtual ~Game();
 
 private:
-	Mesh* mesh;
-	Shader* shader;
-	Transform* transform;
-	float counter;
+	Mesh* m_mesh;
+	Shader* m_shader;
+	Transform* m_transform;
+	Camera* m_camera;
+	float m_counter;
 };
 

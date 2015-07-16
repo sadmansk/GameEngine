@@ -17,27 +17,27 @@ GNU General Public License for more details.
 #include <windows.h>
 #include <iostream>
 
-CoreEngine::CoreEngine(std::string title, int width, int height) : title(title), width(width), height(height)
+CoreEngine::CoreEngine(std::string title, int width, int height) : m_title(title), m_width(width), m_height(height)
 {
-	mainWindow = new Window(title, width, height);
+	m_mainWindow = new Window(title, width, height);
 	Window::initGraphics(0.0f, 0.0f, 0.0f, 0.0f);
-	game = new Game();
+	m_game = new Game();
 
-	isRunning = true;
+	m_isRunning = true;
 }
 
 
 CoreEngine::~CoreEngine()
 {
-	delete mainWindow;
-	delete game;
+	delete m_mainWindow;
+	delete m_game;
 }
 
 
 
 void CoreEngine::start() {
 	std::cout << "Core engine started." << std::endl;
-	if (!isRunning) {
+	if (!m_isRunning) {
 		std::cout << "Core engine closing." << std::endl;
 		return;
 	}
@@ -48,13 +48,13 @@ void CoreEngine::start() {
 
 void CoreEngine::render() {
 	Window::clear();
-	game->render();
-	mainWindow->update();
+	m_game->render();
+	m_mainWindow->update();
 }
 
 //game loop
 void CoreEngine::run() {
-	isRunning = true;
+	m_isRunning = true;
 	std::cout << "Engine starting...";
 
 	int frames = 0;
@@ -66,7 +66,7 @@ void CoreEngine::run() {
 	long long lastTime = Time::elapsed();
 	double unprocessedTime = 0;
 
-	while (isRunning) {
+	while (m_isRunning) {
 		bool render = false;
 		long long startTime = Time::elapsed();
 		long long passedTime = startTime - lastTime;
@@ -80,14 +80,14 @@ void CoreEngine::run() {
 			render = true;
 			unprocessedTime -= frameTime;
 
-			if (mainWindow->isClosed())
+			if (m_mainWindow->isClosed())
 				stop();
 
 			Time::setDelta(frameTime);
 
 			//update the game here
-			game->input(); //process the inputs
-			game->update(); //update game values
+			m_game->input(); //process the inputs
+			m_game->update(); //update game values
 
 			//display the frame count every second
 			if (frameCounter >= SECOND) {
@@ -108,5 +108,5 @@ void CoreEngine::run() {
 }
 
 void CoreEngine::stop() {
-	isRunning = false;
+	m_isRunning = false;
 }

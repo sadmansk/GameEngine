@@ -13,7 +13,7 @@ public:
 		m_scale(scale) {}
 
 	//getter for transform matrix, generally called model matrix
-	inline glm::mat4 GetModel() const {
+	inline glm::mat4 getModel() const {
 		glm::mat4 posMatrix = glm::translate(m_pos);
 		glm::mat4 scaleMatrix = glm::scale(m_scale);
 		glm::mat4 rotXMatrix = glm::rotate(m_rot.x, glm::vec3(1, 0, 0));
@@ -25,17 +25,16 @@ public:
 		//scale first, then rotation and then position transform
 		return posMatrix * rotMatrix * scaleMatrix;
 	}
-	//LOL Sadman is gay
 
 	//getters, returns by reference
-	inline glm::vec3& GetPos() { return m_pos; }
-	inline glm::vec3& GetRot() { return m_rot; }
-	inline glm::vec3& GetScale() { return m_scale; }
+	inline glm::vec3& getPos() { return m_pos; }
+	inline glm::vec3& getRot() { return m_rot; }
+	inline glm::vec3& getScale() { return m_scale; }
 
 	//setters
-	inline void SetPos(const glm::vec3& pos) { m_pos = pos; }
-	inline void SetRot(const glm::vec3& rot) { m_rot = rot; }
-	inline void SetScale(const glm::vec3& scale) { m_scale = scale; }
+	inline void setPos(const glm::vec3& pos) { m_pos = pos; }
+	inline void setRot(const glm::vec3& rot) { m_rot = rot; }
+	inline void setScale(const glm::vec3& scale) { m_scale = scale; }
 
 
 	virtual ~Transform() {};

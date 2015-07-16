@@ -18,11 +18,6 @@ GNU General Public License for more details.
 #include "time.h"
 #include "game.h"
 
-#define WIDTH 1280
-#define HEIGHT 700
-#define TITLE "Game Engine"
-#define FRAME_CAP 5000.0f
-
 class CoreEngine
 {
 public:
@@ -34,11 +29,11 @@ public:
 	~CoreEngine();
 
 private:
-	Window* mainWindow;
-	int width, height;
-	const std::string title;
-	bool isRunning;
-	Game* game;
+	Window* m_mainWindow;
+	int m_width, m_height;
+	const std::string m_title;
+	bool m_isRunning;
+	Game* m_game;
 
 	void run();
 	void render();

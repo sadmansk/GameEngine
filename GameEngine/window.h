@@ -27,6 +27,7 @@ public:
 	static void clear();
 	static void initGraphics(float r, float g, float b, float a);
 	inline bool isClosed() { return m_isClosed;	}
+	//inline static float getAspect() { return (float)m_width / (float)m_height;  }
 	void update();
 
 	//dtor
@@ -36,4 +37,5 @@ private:
 	SDL_Window* m_window;
 	SDL_GLContext m_context;
 	bool m_isClosed;
+	int m_width, m_height;
 };

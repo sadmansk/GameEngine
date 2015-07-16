@@ -30,32 +30,35 @@ Game::Game()
 							2, 1, 0,
 							0, 2, 3};
 
-	shader = new Shader("./res/basicShader");
+	m_shader = new Shader("./res/basicShader");
 
 	//mesh = new Mesh(data, sizeof(data)/sizeof(data[0]), indices, sizeof(indices)/sizeof(indices[0]));
 
-	mesh = new Mesh("./res/monkeyNoUV.obj");
-	transform = new Transform();
+	m_mesh = new Mesh("./res/monkeyNoUV.obj");
+	m_transform = new Transform();
+	m_camera = new Camera(glm::vec3(0.0f, 0.0f, -2.0f), 70.0f, (float)WIDTH/HEIGHT, 1.0f, 100.0f);
 
-	transform->SetScale(glm::vec3(0.5f, 0.5f, 0.5f));
+	m_transform->setScale(glm::vec3(0.5f, 0.5f, 0.5f));
 
-	shader->addUniform("transform");
-	counter = 0;
+	m_shader->addUniform("transform");
+	m_counter = 0;
 }
 
 
 Game::~Game()
 {
-	delete mesh;
-	delete shader;
+	delete m_mesh;
+	delete m_shader;
+	delete m_transform;
+	delete m_camera;
 }
 
 void Game::input() {
 }
 
 void Game::render() {
-	shader->bind();
-	mesh->draw();
+	m_shader->bind();
+	m_mesh->draw();
 	if (Input::getKeyDown(SDLK_UP)) {
 		std::cout << "You have pressed up!" << std::endl;
 	}
@@ -72,14 +75,14 @@ void Game::render() {
 }
 
 void Game::update() {
-	counter += Time::getDelta();
+	m_counter += Time::getDelta();
 	//std::cout << counter << std::endl;
-	float sinCounter = counter;
+	float sinCounter = m_counter;
 	float absSinCounter = abs(sinCounter);
 
 	//transform->GetPos().x = sinCounter;
-	transform->GetRot().y = sinCounter;
+	m_transform->getRot().y = sinCounter;
 	//transform->GetRot().z = sinCounter;
 
-	shader->setUniformMat4("transform", transform->GetModel());
+	m_shader->setUniformMat4("transform", m_camera->getViewProjection() * m_transform->getModel());
 }
