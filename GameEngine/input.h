@@ -12,6 +12,9 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
+#ifndef INPUT_H_INCLUDED
+#define INPUT_H_INCLUDED
+
 #include <sdl/SDL.h> //required for getting the keyboard inputs
 #include <vector>
 #include <glm/glm.hpp>
@@ -40,3 +43,5 @@ private:
 	static std::vector<Uint8> downMouse; //store the mouse buttons in the current frame
 	static std::vector<Uint8> upMouse; //store the mouse buttons released in the current frame
 };
+
+#endif INPUT_H_INCLUDED

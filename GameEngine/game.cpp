@@ -54,12 +54,13 @@ Game::~Game()
 }
 
 void Game::input() {
+	m_camera->input();
 }
 
 void Game::render() {
 	m_shader->bind();
 	m_mesh->draw();
-	if (Input::getKeyDown(SDLK_UP)) {
+	/*if (Input::getKeyDown(SDLK_UP)) {
 		std::cout << "You have pressed up!" << std::endl;
 		m_camera->translate(glm::vec3(0.0f, 0.0f, 0.1f));
 	}
@@ -73,6 +74,7 @@ void Game::render() {
 	else if (Input::getMouseUp(SDL_BUTTON_LEFT)) {
 		std::cout << "You released the left mouse button!" << std::endl;
 	}
+	*/
 }
 
 void Game::update() {
@@ -85,5 +87,5 @@ void Game::update() {
 	m_transform->getRot().y = sinCounter;
 	//transform->GetRot().z = sinCounter;
 
-	m_shader->setUniformMat4("transform", m_camera->getViewProjection() * m_transform->getModel());
+	m_shader->setUniformMat4("transform", m_transform->getProjectedModel(m_camera));
 }

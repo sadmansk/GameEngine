@@ -3,6 +3,7 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
+#include "camera.h"
 
 class Transform
 {
@@ -26,6 +27,10 @@ public:
 		return posMatrix * rotMatrix * scaleMatrix;
 	}
 
+	inline glm::mat4 getProjectedModel(Camera* camera)  const {
+		return camera->getViewProjection() * getModel();
+	}
+
 	//getters, returns by reference
 	inline glm::vec3& getPos() { return m_pos; }
 	inline glm::vec3& getRot() { return m_rot; }
@@ -42,4 +47,4 @@ public:
 private:
 	glm::vec3 m_pos, m_rot, m_scale; //m_ refers to member variables
 };
-#endif
+#endif CAMERA_H_INCLUDED

@@ -4,6 +4,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
 #include <glm/gtx/rotate_vector.hpp>
+#include "input.h"
+
+#define SPEED 0.001f
 
 class Camera
 {
@@ -20,6 +23,22 @@ public:
 		return m_perspective * glm::lookAt(m_position, m_position + m_forward, m_up);
 	}
 
+	inline void input() {
+		//moving the camera
+		if (Input::getKey(SDLK_w)) {
+			m_position.z += SPEED;
+		}
+		if (Input::getKey(SDLK_s)) {
+			m_position.z -= SPEED;
+		}
+		if (Input::getKey(SDLK_a)) {
+			m_position.x += SPEED;
+		}
+		if (Input::getKey(SDLK_d)) {
+			m_position.x -= SPEED;
+		}
+	}
+	
 	inline void rotate(float angle, glm::vec3& axis) {
 		m_forward = glm::rotate(m_forward, angle, axis);
 		m_up = glm::rotate(m_up, angle, axis);
