@@ -5,7 +5,8 @@ A test game engine with C++ and OpenGL.
 Refer to the [wiki](https://github.com/sadmansk/GameEngine/wiki) for more information.
 
 ###License:
-<code>A test game engine with C++ and OpenGL
+```
+A test game engine with C++ and OpenGL
 Copyright (C) 2015  Sadman Kazi
 
 This program is free software; you can redistribute it and/or modify
@@ -16,6 +17,6 @@ the Free Software Foundation; either version 2 of the License, or
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.</code>
-
+GNU General Public License for more details.
+```
 See [LICENSE](https://raw.githubusercontent.com/sadmansk/GameEngine/master/LICENSE) for more details.
