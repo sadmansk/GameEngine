@@ -2,7 +2,7 @@
 A test game engine with C++ and OpenGL.
 
 ###Documentation:
-Refer to the [wiki](https://github.com/sadmansk/GameEngine/wiki) for more information.
+Refer to the [wiki](https://github.com/sadmansk/GameEngine/wiki) for more information. Also if you are interested in contributing, follow these [guidelines](https://github.com/sadmansk/GameEngine/wiki/Contributing-to-the-Wiki)
 
 ###License:
 ```
