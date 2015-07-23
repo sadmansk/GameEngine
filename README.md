@@ -1,4 +1,4 @@
-# GameEngine
+# 3d Game Engine
 A test game engine with C++ and OpenGL.
 
 ###Documentation:
