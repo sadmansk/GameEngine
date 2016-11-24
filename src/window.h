@@ -13,8 +13,11 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
+#ifndef WINDOW_H_
+#define WINDOW_H_
+
 #include <string>
-#include <sdl\SDL.h>
+#include <SDL2/SDL.h>
 #include "input.h"
 
 class Window
@@ -39,3 +42,5 @@ private:
 	bool m_isClosed;
 	int m_width, m_height;
 };
+
+#endif // WINDOW_H_

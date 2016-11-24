@@ -14,7 +14,8 @@ GNU General Public License for more details.
 */
 
 #include "window.h"
-#include <glew/glew.h>
+#include <SDL2/SDL.h>
+#include <GL/glew.h>
 #include <iostream>
 #include <cassert>
 

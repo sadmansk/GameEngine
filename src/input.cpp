@@ -15,6 +15,7 @@ GNU General Public License for more details.
 
 #include "input.h"
 #include <stdlib.h>
+#include <algorithm>
 
 std::vector<SDL_Keycode> Input::currentKeys(0);
 std::vector<SDL_Keycode> Input::downKeys(0);

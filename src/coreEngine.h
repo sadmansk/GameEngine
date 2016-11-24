@@ -13,6 +13,9 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
+#ifndef CORE_ENGINE_H_
+#define CORE_ENGINE_H_
+
 #include <string>
 #include "window.h"
 #include "time.h"
@@ -39,3 +42,4 @@ private:
 	void render();
 };
 
+#endif // CORE_ENGINE_H_

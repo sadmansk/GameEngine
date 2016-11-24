@@ -16,7 +16,7 @@ GNU General Public License for more details.
 #define MESH_H
 
 #include "vertex.h"
-#include <glew/glew.h>
+#include <GL/glew.h>
 #include "obj_loader.h"
 
 class Mesh

@@ -14,8 +14,8 @@ GNU General Public License for more details.
 */
 
 #include "coreEngine.h"
-#include <windows.h>
 #include <iostream>
+#include <thread>
 
 CoreEngine::CoreEngine(std::string title, int width, int height) : m_title(title), m_width(width), m_height(height)
 {
@@ -100,9 +100,9 @@ void CoreEngine::run() {
 		if (render) {
 			this->render();
 			frames++;
-		}
-		else
-			Sleep(1); //delay the loop so that calculations are not made too often
+		} else {
+			std::this_thread::sleep_for(std::chrono::milliseconds(1)); //delay the loop so that calculations are not made too often
+        }
 	}
 
 }
