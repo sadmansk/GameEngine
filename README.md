@@ -2,7 +2,26 @@
 A test game engine with C++ and OpenGL.
 
 ### Documentation:
-Refer to the [wiki](https://github.com/sadmansk/GameEngine/wiki) for more information. Also if you are interested in contributing, follow these [guidelines](https://github.com/sadmansk/GameEngine/wiki/Contributing-to-the-Wiki).
+Refer to the [wiki](https://github.com/sadmansk/GameEngine/wiki) for more information.
+Also if you are interested in contributing, follow these [guidelines](https://github.com/sadmansk/GameEngine/wiki/Contributing-to-the-Wiki).
+
+### Quick Start
+You need the following libraries:
+* `cmake`
+* `SDL2`
+* `GLEW`
+* `ASSIMP`
+* `GLM`
+
+CMake recommends out of directory builds, so it's a smart idea to make a new directory
+(I'm calling it `build`) and run the following command from there:
+```
+cmake ..
+make
+```
+
+> Note: These instructions are for Mac and Linux, Windows/Visual Studio details
+coming soon.
 
 ### License:
 ```
@@ -19,4 +38,5 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 ```
-See [LICENSE](https://raw.githubusercontent.com/sadmansk/GameEngine/master/LICENSE) for more details.
+See [LICENSE](https://raw.githubusercontent.com/sadmansk/GameEngine/master/LICENSE)
+for more details.

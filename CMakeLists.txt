@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 project (GameEngine)
 
 # add compiler flags
@@ -30,7 +30,7 @@ SET(GameEngine_CMAKE_DIR "${GameEngine_SOURCE_DIR}/cmake")
 find_package(OpenGL REQUIRED)
 
 # GLEW
-#INCLUDE(${GameEngine_CMAKE_DIR}/FindGLEW.cmake)
+INCLUDE(${GameEngine_CMAKE_DIR}/FindGLEW.cmake)
 
 # SDL2
 INCLUDE(${GameEngine_CMAKE_DIR}/FindSDL2.cmake)
@@ -38,12 +38,15 @@ INCLUDE(${GameEngine_CMAKE_DIR}/FindSDL2.cmake)
 # ASSIMP
 INCLUDE(${GameEngine_CMAKE_DIR}/FindASSIMP.cmake)
 
+# GLM
+INCLUDE(${GameEngine_CMAKE_DIR}/FindGLM.cmake)
+
 # Define the include DIRs
 include_directories(
     ${GameEngine_SOURCE_DIR}/headers
     ${GameEngine_SOURCE_DIR}/sources
     ${OPENGL_INCLUDE_DIRS}
-    #${GLEW_INCLUDE_DIRS}
+    ${GLEW_INCLUDE_DIRS}
     ${SDL2_INCLUDE_DIRS}
     ${ASSIMP_INCLUDE_DIRS}
     )
@@ -51,7 +54,7 @@ include_directories(
 # Define the link libraries
 target_link_libraries( GameEngine
     ${OPENGL_LIBRARIES}
-    #${GLEW_LIBRARIES}
+    ${GLEW_LIBRARIES}
     ${SDL2_LIBRARIES}
     ${ASSIMP_LIBRARIES}
     )
