@@ -1,10 +1,17 @@
+cache:
+    key: apt-cache
+    paths:
+        - apt-cache/
+
 before_script:
-    - apt-get update -qq
-    - apt-get install -qq -y cmake libsdl2-dev libglew-dev libglm-dev libassimp-dev
+    - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
+    - apt-get update -qq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y -qq cmake libsdl2-dev libglew-dev libglm-dev libassimp-dev
+    - cmake --version
 
-script:
-    - mkdir build
-    - cd build
-    - cmake ../
-    - make
-
+build:
+    stage: test
+    script:
+        - mkdir -p build
+        - cd build
+        - cmake ../
+        - make
