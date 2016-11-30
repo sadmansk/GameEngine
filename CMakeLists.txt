@@ -33,6 +33,7 @@ add_executable(GameEngine ${HDRS} ${SRCS})
 
 # We need a CMAKE_DIR with some code to find external dependencies
 SET(GameEngine_CMAKE_DIR "${GameEngine_SOURCE_DIR}/cmake")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${GameEngine_SOURCE_DIR}/cmake")
 
 #######################################
 # LOOK for the packages that we need! #
@@ -41,8 +42,12 @@ SET(GameEngine_CMAKE_DIR "${GameEngine_SOURCE_DIR}/cmake")
 # OpenGL
 find_package(OpenGL REQUIRED)
 
+# SDL
+#find_package(SDL2 REQUIRED)
+
 # GLEW
-INCLUDE(${GameEngine_CMAKE_DIR}/FindGLEW.cmake)
+find_package(GLEW REQUIRED)
+#INCLUDE(${GameEngine_CMAKE_DIR}/FindGLEW.cmake)
 
 # SDL2
 INCLUDE(${GameEngine_CMAKE_DIR}/FindSDL2.cmake)
