@@ -30,11 +30,11 @@ Game::Game()
 							2, 1, 0,
 							0, 2, 3};
 
-	m_shader = new Shader("./res/basicShader");
+	m_shader = new Shader("../res/basicShader");
 
 	//mesh = new Mesh(data, sizeof(data)/sizeof(data[0]), indices, sizeof(indices)/sizeof(indices[0]));
 
-	m_mesh = new Mesh("./res/monkeyNoUV.obj");
+	m_mesh = new Mesh("../res/monkeyNoUV.obj");
 	m_transform = new Transform();
 	m_camera = new Camera(glm::vec3(0.0f, 0.0f, -2.0f), 70.0f, (float)WIDTH/HEIGHT, 1.0f, 100.0f);
 
