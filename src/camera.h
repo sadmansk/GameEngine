@@ -57,4 +57,4 @@ private:
 	glm::vec3 m_up;
 };
 
-#endif CAMERA_H_INCLUDED
+#endif //CAMERA_H_INCLUDED

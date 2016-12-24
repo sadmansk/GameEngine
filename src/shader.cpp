@@ -40,10 +40,11 @@ void Shader::addUniform(const std::string& uniform) {
 
 	if (uniformLocation < 0) {
 		std::cerr << "Error: Could not find uniform " << uniform << std::endl;
-	}
-
-	//once we know that the uniform exists, add it to the hash map
-	uniforms.insert({ uniform, uniformLocation });
+        throw std::exception(); // TODO: Custom exception class
+    } else {
+        //once we know that the uniform exists, add it to the hash map
+        uniforms.insert({ uniform, uniformLocation });
+    }
 }
 
 void Shader::setUniformI(const std::string& name, int value) {

@@ -47,4 +47,4 @@ public:
 private:
 	glm::vec3 m_pos, m_rot, m_scale; //m_ refers to member variables
 };
-#endif CAMERA_H_INCLUDED
+#endif // TRANSFORM_H

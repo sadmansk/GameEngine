@@ -40,7 +40,7 @@ Game::Game()
 
 	m_transform->setScale(glm::vec3(0.5f, 0.5f, 0.5f));
 
-	m_shader->addUniform("transform");
+	m_shader->addUniform("u_transform");
 	m_counter = 0;
 }
 
@@ -84,8 +84,8 @@ void Game::update() {
 	float absSinCounter = abs(sinCounter);
 
 	//transform->GetPos().x = sinCounter;
-	m_transform->getRot().y = sinCounter;
+	//m_transform->getRot().y = sinCounter;
 	//transform->GetRot().z = sinCounter;
 
-	m_shader->setUniformMat4("transform", m_transform->getProjectedModel(m_camera));
+	m_shader->setUniformMat4("u_transform", m_transform->getProjectedModel(m_camera));
 }
