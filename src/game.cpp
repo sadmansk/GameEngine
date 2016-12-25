@@ -84,7 +84,7 @@ void Game::update() {
 	float absSinCounter = abs(sinCounter);
 
 	//transform->GetPos().x = sinCounter;
-	//m_transform->getRot().y = sinCounter;
+	m_transform->getRot().y = sinCounter;
 	//transform->GetRot().z = sinCounter;
 
 	m_shader->setUniformMat4("u_transform", m_transform->getProjectedModel(m_camera));
