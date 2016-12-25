@@ -1,5 +1,5 @@
-#ifndef CAMERA_H_INCLUDED
-#define CAMERA_H_INCLUDED
+#ifndef CAMERA_H
+#define CAMERA_H
 
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
@@ -7,6 +7,11 @@
 #include "input.h"
 
 #define SPEED 0.001f
+
+#define DEBUG_MOVEMENT false
+#ifdef DEBUG_MOVEMENT
+#include <iostream>
+#endif //DEBUG_MOVEMENT
 
 class Camera
 {
@@ -27,15 +32,27 @@ public:
 		//moving the camera
 		if (Input::getKey(SDLK_w)) {
 			m_position.z += SPEED;
+            if (DEBUG_MOVEMENT) {
+                std::cout << "Pressed W" << std::endl;
+            }
 		}
 		if (Input::getKey(SDLK_s)) {
 			m_position.z -= SPEED;
+            if (DEBUG_MOVEMENT) {
+                std::cout << "Pressed S" << std::endl;
+            }
 		}
 		if (Input::getKey(SDLK_a)) {
 			m_position.x += SPEED;
+            if (DEBUG_MOVEMENT) {
+                std::cout << "Pressed A" << std::endl;
+            }
 		}
 		if (Input::getKey(SDLK_d)) {
 			m_position.x -= SPEED;
+            if (DEBUG_MOVEMENT) {
+                std::cout << "Pressed D" << std::endl;
+            }
 		}
 	}
 	
@@ -57,4 +74,4 @@ private:
 	glm::vec3 m_up;
 };
 
-#endif //CAMERA_H_INCLUDED
+#endif //CAMERA_H
