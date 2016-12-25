@@ -10,6 +10,7 @@ public:
 	Shader(const std::string fileName);
 
 	void bind();
+    void printActiveUniforms();
 	void addUniform(const std::string& uniform);
 	//methods for setting uniform values
 	void setUniformI(const std::string& name, int value);

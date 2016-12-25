@@ -35,11 +35,32 @@ Shader::~Shader()
 	glDeleteProgram(m_program);
 }
 
+void Shader::printActiveUniforms() {
+    GLint i;
+    GLint count;
+
+    GLint size; // size of the variable
+    GLenum type; // type of the variable (float, vec3 or mat4, etc)
+
+    const GLsizei bufSize = 16; // maximum name length
+    GLchar name[bufSize]; // variable name in GLSL
+    GLsizei length; // name length
+
+    glGetProgramiv(m_program, GL_ACTIVE_UNIFORMS, &count);
+    std::cout << "Active Uniforms: " << count << std::endl;
+
+    for (i = 0; i < count; i++) {
+        glGetActiveUniform(m_program, (GLuint)i, bufSize, &length, &size, &type, name);
+        std::cout << "Uniform #" << i << " Type: " << type << " Name: " << name << std::endl;
+    }
+}
+
 void Shader::addUniform(const std::string& uniform) {
 	int uniformLocation = glGetUniformLocation(m_program, uniform.c_str());
 
-	if (uniformLocation < 0) {
+	if (uniformLocation == -1) {
 		std::cerr << "Error: Could not find uniform " << uniform << std::endl;
+        printActiveUniforms();
         throw std::exception(); // TODO: Custom exception class
     } else {
         //once we know that the uniform exists, add it to the hash map
