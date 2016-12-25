@@ -1,3 +1,6 @@
+#ifndef SHADER_H_
+#define SHADER_H_
+
 #include <GL/glew.h>
 #include <string>
 #include <unordered_map>
@@ -7,23 +10,24 @@
 class Shader
 {
 public:
-	Shader(const std::string fileName);
+    Shader(const std::string fileName);
 
-	void bind();
+    void bind();
     void printActiveUniforms();
-	void addUniform(const std::string& uniform);
-	//methods for setting uniform values
-	void setUniformI(const std::string& name, int value);
-	void setUniformF(const std::string& name, float value);
-	void setUniformVec3(const std::string& name, const glm::vec3& value);
-	void setUniformMat4(const std::string& name, const glm::mat4& value);
-	~Shader();
+    void addUniform(const std::string& uniform);
+    //methods for setting uniform values
+    void setUniformI(const std::string& name, int value);
+    void setUniformF(const std::string& name, float value);
+    void setUniformVec3(const std::string& name, const glm::vec3& value);
+    void setUniformMat4(const std::string& name, const glm::mat4& value);
+    ~Shader();
 
 private:
-	static const unsigned int NUM_SHADERS = 2; //since we will only be using vertex and fragment shaders(for now)
+    static const unsigned int NUM_SHADERS = 2; //since we will only be using vertex and fragment shaders(for now)
 
-	GLuint m_program;
-	GLuint m_shaders[NUM_SHADERS];
-	std::unordered_map<std::string, int> uniforms;//stores the variable name and location of GLSL uniforms
+    GLuint m_program;
+    GLuint m_shaders[NUM_SHADERS];
+    std::unordered_map<std::string, int> uniforms;//stores the variable name and location of GLSL uniforms
 };
 
+#endif // SHADER_H_
