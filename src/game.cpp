@@ -34,8 +34,8 @@ Game::Game()
 
     //m_mesh = new Mesh(data, sizeof(data)/sizeof(data[0]), indices, sizeof(indices)/sizeof(indices[0]));
 
-    m_mesh = new Mesh("../res/monkey.obj");
-    m_texture = new Texture("../res/checker_pattern.jpg");
+    m_mesh = new Mesh("../res/sample_level.obj");
+    m_texture = new Texture("../res/gray.jpg");
 
     m_transform = new Transform();
     m_camera = new Camera(glm::vec3(0.0f, 0.0f, -2.0f), 70.0f, (float)WIDTH/HEIGHT, 1.0f, 100.0f);
@@ -43,6 +43,8 @@ Game::Game()
     m_transform->setScale(glm::vec3(0.5f, 0.5f, 0.5f));
 
     m_shader->addUniform("u_transform");
+    //m_shader->addUniform("u_ambientLight");
+    //m_shader->setUniformVec3("u_ambientLight", glm::vec3(1,1,1));
     m_counter = 0;
 }
 
