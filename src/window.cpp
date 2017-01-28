@@ -71,9 +71,8 @@ void Window::initGraphics(float r, float g, float b, float a) {
     glClearColor(r, g, b, a);
 
     //enable back face culling
-    glFrontFace(GL_CW);
-    glCullFace(GL_BACK);
     glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
 
     //gpu will know which vertex is at the top (z value)
     glEnable(GL_DEPTH_TEST);

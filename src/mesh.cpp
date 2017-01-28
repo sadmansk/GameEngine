@@ -8,22 +8,24 @@ Mesh::Mesh(const std::string& fileName) {
 
 Mesh::Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices) 
 {
-    m_drawCount = numVertices;
-
-    //binding the vertex array object
+    m_drawCount = numVertices; //binding the vertex array object
     glGenVertexArrays(1, &m_vertexArrayObject);
     glBindVertexArray(m_vertexArrayObject);
 
     // retrieve the data from the vertices
     std::vector<glm::vec3*> posCoords;
     std::vector<glm::vec2*> texCoords;
+    std::vector<glm::vec3*> normals;
 
     posCoords.reserve(numVertices);
     texCoords.reserve(numVertices);
+    normals.reserve(numVertices);
 
     for (unsigned int i = 0; i < numVertices; i++) {
         posCoords.push_back(vertices[i].getPos());
         texCoords.push_back(vertices[i].getTexCoord());
+        normals.push_back(vertices[i].getNormal());
+
     }
 
     //writing it to the GPU using buffers
@@ -101,7 +103,6 @@ void Mesh::InitMesh(const IndexedModel& model) {
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
-    /*
     glBindBuffer(GL_ARRAY_BUFFER, m_vertexArrayBuffers[NORMAL_VB]);
     //take data and put it in the buffer, from program to GPU memory
     glBufferData(GL_ARRAY_BUFFER, model.normals.size() * sizeof(model.normals[0]), &model.normals[0], GL_STATIC_DRAW); //static draw means that the data is not gonna change
@@ -109,7 +110,6 @@ void Mesh::InitMesh(const IndexedModel& model) {
     //need a vertex attribute for every vertex member, tells where in the sequence to look at in the GPU memory
     glEnableVertexAttribArray(2); //look at it as an array
     glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, 0);
-    */
 
     //get some buffers to work with
     glGenBuffers(NUM_BUFFERS, m_vertexArrayBuffers);
