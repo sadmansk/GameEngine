@@ -1,4 +1,4 @@
-# 3D Game Engine
+# 3D Game Engine [![build status](https://git.sadmansk.com/sadmansk/GameEngine/badges/master/build.svg)](https://git.sadmansk.com/sadmansk/GameEngine/commits/master)
 A test game engine with C++ and OpenGL.
 
 ### Documentation:
@@ -22,6 +22,10 @@ make
 
 > Note: These instructions are for Mac and Linux, Windows/Visual Studio details
 coming soon.
+
+### Demo:
+![Level loading](res/demo/level.gif)
+![Texture support](res/demo/texture.gif)
 
 ### License:
 ```
