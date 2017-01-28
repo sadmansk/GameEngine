@@ -16,6 +16,7 @@
 #define GAME_H_
 
 #include "mesh.h"
+#include "texture.h"
 #include "shader.h"
 #include "transform.h"
 #include "camera.h"
@@ -33,6 +34,7 @@ public:
     void input();
     void update();
     void render();
+    void loadMesh(const std::string& model_path);
 
     virtual ~Game();
 
@@ -41,6 +43,7 @@ private:
     Shader* m_shader;
     Transform* m_transform;
     Camera* m_camera;
+    Texture* m_texture;
     float m_counter;
 };
 

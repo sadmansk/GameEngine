@@ -20,10 +20,10 @@
 
 Game::Game()
 {
-    Vertex data[] = { Vertex(glm::vec3(-0.5, -0.5, 0)),
-        Vertex(glm::vec3(0, 0.5, 0)),
-        Vertex(glm::vec3(0.5, -0.5, 0)),
-        Vertex(glm::vec3(0, -0.5, 0.5))};
+    Vertex data[] = { Vertex(glm::vec3(-0.5, -0.5, 0), glm::vec2(0, 0)),
+        Vertex(glm::vec3(0, 0.5, 0), glm::vec2(0,0)),
+        Vertex(glm::vec3(0.5, -0.5, 0),glm::vec2(0,0)),
+        Vertex(glm::vec3(0, -0.5, 0.5),glm::vec2(0,0))};
 
     unsigned int indices[] = {0, 1, 3,
         3, 1, 2,
@@ -32,9 +32,11 @@ Game::Game()
 
     m_shader = new Shader("../res/basicShader");
 
-    //mesh = new Mesh(data, sizeof(data)/sizeof(data[0]), indices, sizeof(indices)/sizeof(indices[0]));
+    //m_mesh = new Mesh(data, sizeof(data)/sizeof(data[0]), indices, sizeof(indices)/sizeof(indices[0]));
 
     m_mesh = new Mesh("../res/monkey.obj");
+    m_texture = new Texture("../res/checker_pattern.jpg");
+
     m_transform = new Transform();
     m_camera = new Camera(glm::vec3(0.0f, 0.0f, -2.0f), 70.0f, (float)WIDTH/HEIGHT, 1.0f, 100.0f);
 
@@ -59,6 +61,7 @@ void Game::input() {
 
 void Game::render() {
     m_shader->bind();
+    m_texture->bind(0);
     m_mesh->draw();
     /*if (Input::getKeyDown(SDLK_UP)) {
       std::cout << "You have pressed up!" << std::endl;
@@ -71,8 +74,7 @@ void Game::render() {
       if (Input::getMouseDown(SDL_BUTTON_LEFT)) {
       std::cout << "X: " << Input::getMousePos().x << " Y: " << Input::getMousePos().y << std::endl;
       }
-      else if (Input::getMouseUp(SDL_BUTTON_LEFT)) {
-      std::cout << "You released the left mouse button!" << std::endl;
+      else if (Input::getMouseUp(SDL_BUTTON_LEFT)) { std::cout << "You released the left mouse button!" << std::endl;
       }
       */
 }
@@ -84,8 +86,12 @@ void Game::update() {
     float absSinCounter = abs(sinCounter);
 
     //transform->GetPos().x = sinCounter;
-    m_transform->getRot().y = sinCounter;
+    //m_transform->getRot().y = sinCounter;
     //transform->GetRot().z = sinCounter;
 
     m_shader->setUniformMat4("u_transform", m_transform->getProjectedModel(m_camera));
+}
+
+void Game::loadMesh(const std::string& model_path) {
+    
 }
