@@ -8,6 +8,7 @@
 #include "input.h"
 
 #define SPEED 0.001f
+#define MOUSE_ENABLED true
 
 #define DEBUG_MOVEMENT false
 #ifdef DEBUG_MOVEMENT
@@ -32,14 +33,16 @@ public:
     }
 
     inline void input() {
-        // Check if the mouse moved
-        glm::vec2 new_mouse_pos = Input::getMousePos();
-        int delta_x = new_mouse_pos.x - m_mouse_pos.x;
-        if (DEBUG_MOVEMENT) {
-            std::cout << "Delta X: " << delta_x << std::endl;
+        if (MOUSE_ENABLED) {
+            // Check if the mouse moved
+            glm::vec2 new_mouse_pos = Input::getMousePos();
+            int delta_x = new_mouse_pos.x - m_mouse_pos.x;
+            if (DEBUG_MOVEMENT) {
+                std::cout << "Delta X: " << delta_x << std::endl;
+            }
+            m_forward.x = glm::cos((float)delta_x/100);
+            m_forward.z = glm::sin((float)delta_x/100);
         }
-        m_forward.x = glm::cos((float)delta_x/100);
-        m_forward.z = glm::sin((float)delta_x/100);
 
         //moving the camera
         if (Input::getKey(SDLK_w)) {
