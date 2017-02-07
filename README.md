@@ -1,11 +1,7 @@
 # 3D Game Engine [![build status](https://git.sadmansk.com/sadmansk/GameEngine/badges/master/build.svg)](https://git.sadmansk.com/sadmansk/GameEngine/commits/master)
 A test game engine with C++ and OpenGL.
 
-### Documentation:
-Refer to the [wiki](https://github.com/sadmansk/GameEngine/wiki) for more information.
-Also if you are interested in contributing, follow these [guidelines](https://github.com/sadmansk/GameEngine/wiki/Contributing-to-the-Wiki).
-
-### Quick Start
+## Quick Start
 You need the following libraries:
 * `cmake`
 * `SDL2`
@@ -23,18 +19,18 @@ make
 > Note: These instructions are for Mac and Linux, Windows/Visual Studio details
 coming soon.
 
-### Current Features:
-#### Core Engine
+## Current Features
+### Core Engine:
 - Keyboard and mouse input mapping
 - First person camera
 
-#### Rendering
+### Rendering:
 - Wavefront (.obj) file loading
 - Vertex and Fragment shaders support
 - Textures support
 - Basic Lighting
 
-### Roadmap:
+## Roadmap
 These features are planned to be included *very soon*.
 - Phong lighting model
 - Material support
@@ -47,7 +43,7 @@ writing the C Vulkan engine or not:
 - Animation
 - Scripting
 
-### Demo:
+## Demo
 ![Level loading](res/demo/level.gif)
 Loading in a complete level from a wavefront file. Also showcases the first person
 camera.
@@ -55,10 +51,14 @@ camera.
 ![Texture support](res/demo/texture.gif)
 Showcasing texture support.
 
-### License:
+## Documentation
+Refer to the [wiki](https://github.com/sadmansk/GameEngine/wiki) for more information.
+Also if you are interested in contributing, follow these [guidelines](https://github.com/sadmansk/GameEngine/wiki/Contributing-to-the-Wiki).
+
+## License
 ```
 A test game engine with C++ and OpenGL
-Copyright (C) 2015  Sadman Kazi
+Copyright (C) 2017  Sadman Kazi
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
