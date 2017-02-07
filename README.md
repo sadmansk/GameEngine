@@ -23,9 +23,37 @@ make
 > Note: These instructions are for Mac and Linux, Windows/Visual Studio details
 coming soon.
 
+### Current Features:
+#### Core Engine
+- Keyboard and mouse input mapping
+- First person camera
+
+#### Rendering
+- Wavefront (.obj) file loading
+- Vertex and Fragment shaders support
+- Textures support
+- Basic Lighting
+
+### Roadmap:
+These features are planned to be included *very soon*.
+- Phong lighting model
+- Material support
+- Dynamic shaders management
+- Level import and export
+
+The following features are ambitious, depending on whether I plan to move on to
+writing the C Vulkan engine or not:
+- Physics
+- Animation
+- Scripting
+
 ### Demo:
 ![Level loading](res/demo/level.gif)
+Loading in a complete level from a wavefront file. Also showcases the first person
+camera.
+
 ![Texture support](res/demo/texture.gif)
+Showcasing texture support.
 
 ### License:
 ```
