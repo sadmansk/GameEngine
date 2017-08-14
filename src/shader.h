@@ -10,7 +10,7 @@
 class Shader
 {
 public:
-    Shader(const std::string fileName);
+    Shader(const std::string& fileName);
 
     void bind();
     void printActiveUniforms();
@@ -20,7 +20,8 @@ public:
     void setUniformF(const std::string& name, float value);
     void setUniformVec3(const std::string& name, const glm::vec3& value);
     void setUniformMat4(const std::string& name, const glm::mat4& value);
-    ~Shader();
+    virtual void updateUniforms(const glm::mat4&) = 0;
+    virtual ~Shader();
 
 private:
     static const unsigned int NUM_SHADERS = 2; //since we will only be using vertex and fragment shaders(for now)

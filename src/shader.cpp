@@ -6,7 +6,7 @@ static void checkError(GLuint shader, GLuint flag, bool isProgram, const std::st
 static std::string load(const std::string& fileName);
 static GLuint create(const std::string& text, GLenum shaderType);
 
-Shader::Shader(const std::string fileName)
+Shader::Shader(const std::string& fileName)
 {
     m_program = glCreateProgram();
     m_shaders[0] = create(load(fileName + ".vs"), GL_VERTEX_SHADER);

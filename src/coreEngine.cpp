@@ -110,3 +110,8 @@ void CoreEngine::run() {
 void CoreEngine::stop() {
     m_isRunning = false;
 }
+
+void CoreEngine::loadMesh(const std::string& model_path) {
+    m_game->loadMesh(model_path);
+}
+

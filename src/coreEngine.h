@@ -28,6 +28,7 @@ public:
 
     void start();
     void stop();
+    void loadMesh(const std::string& model_path);
 
     ~CoreEngine();
 
