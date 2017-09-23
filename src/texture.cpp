@@ -5,7 +5,7 @@
 
 Texture::Texture(const std::string& fileName) {
 	int width, height, numComponents; //returned by the stb loader
-	
+
 	unsigned char* imageData = stbi_load(fileName.c_str(), &width, &height, &numComponents, 4);
 
 	if (imageData == NULL)
@@ -33,9 +33,13 @@ Texture::~Texture() {
 	glDeleteTextures(1, &m_texture); //delete the texture
 }
 
-void Texture::bind(unsigned int unit) {
+void Texture::bind(unsigned int unit) const {
 	assert(unit >= 0 && unit <= 31);
-	
+
 	glActiveTexture(GL_TEXTURE0 + unit);
 	glBindTexture(GL_TEXTURE_2D, m_texture);
+}
+
+void Texture::unbindAll() {
+    glBindTexture(GL_TEXTURE_2D, 0);
 }

@@ -6,7 +6,8 @@
 class BasicShader : public Shader {
 public:
     static BasicShader* getInstance();
-    virtual void updateUniforms(const glm::mat4& proj_matrix);
+    virtual void updateUniforms(const glm::mat4& proj_matrix,
+            const Material* material);
 
 private:
     BasicShader();

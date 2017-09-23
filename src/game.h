@@ -16,9 +16,9 @@
 #define GAME_H_
 
 #include "mesh.h"
-#include "texture.h"
 #include "shader.h"
 #include "transform.h"
+#include "material.h"
 #include "camera.h"
 
 #define WIDTH 1280
@@ -42,8 +42,8 @@ private:
     Mesh* m_mesh;
     Shader* m_shader;
     Transform* m_transform;
+    Material* m_material;
     Camera* m_camera;
-    Texture* m_texture;
     float m_counter;
 };
 

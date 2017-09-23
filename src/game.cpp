@@ -35,8 +35,9 @@ Game::Game()
 
     //m_mesh = new Mesh(data, sizeof(data)/sizeof(data[0]), indices, sizeof(indices)/sizeof(indices[0]));
 
-    m_mesh = new Mesh("../res/sample_level.obj");
-    m_texture = new Texture("../res/gray.jpg");
+    //m_mesh = new Mesh("../res/sample_level.obj");
+    m_mesh = new Mesh("../res/monkey.obj");
+    m_material = new Material(new Texture("../res/gray.jpg"), new glm::vec3(0, 1, 1));
 
     m_transform = new Transform();
     m_camera = new Camera(glm::vec3(0.0f, 0.0f, -2.0f), 70.0f, (float)WIDTH/HEIGHT, 1.0f, 100.0f);
@@ -53,6 +54,7 @@ Game::~Game()
     delete m_mesh;
     delete m_transform;
     delete m_camera;
+    delete m_material;
 }
 
 void Game::input() {
@@ -61,7 +63,6 @@ void Game::input() {
 
 void Game::render() {
     m_shader->bind();
-    m_texture->bind(0);
     m_mesh->draw();
     /*if (Input::getKeyDown(SDLK_UP)) {
       std::cout << "You have pressed up!" << std::endl;
@@ -89,7 +90,7 @@ void Game::update() {
     //m_transform->getRot().y = sinCounter;
     //transform->GetRot().z = sinCounter;
 
-    m_shader->updateUniforms(m_transform->getProjectedModel(m_camera));
+    m_shader->updateUniforms(m_transform->getProjectedModel(m_camera), m_material);
 }
 
 void Game::loadMesh(const std::string& model_path) {
