@@ -6,7 +6,7 @@ Mesh::Mesh(const std::string& fileName) {
     InitMesh(model);
 }
 
-Mesh::Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices) 
+Mesh::Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, unsigned int numIndices)
 {
     m_drawCount = numVertices; //binding the vertex array object
     glGenVertexArrays(1, &m_vertexArrayObject);
@@ -59,7 +59,7 @@ Mesh::Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, un
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
     glBindVertexArray(1);
-    
+
 }
 
 void Mesh::draw() {

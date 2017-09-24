@@ -17,7 +17,7 @@
 #include "input.h"
 #include <iostream>
 #include "time.h"
-#include "basic_shader.h"
+#include "phong_shader.h"
 
 Game::Game()
 {
@@ -31,7 +31,7 @@ Game::Game()
         2, 1, 0,
         0, 2, 3};
 
-    m_shader = BasicShader::getInstance();
+    m_shader = PhongShader::getInstance();
 
     //m_mesh = new Mesh(data, sizeof(data)/sizeof(data[0]), indices, sizeof(indices)/sizeof(indices[0]));
 
@@ -43,8 +43,6 @@ Game::Game()
     m_camera = new Camera(glm::vec3(0.0f, 0.0f, -2.0f), 70.0f, (float)WIDTH/HEIGHT, 1.0f, 100.0f);
 
     m_transform->setScale(glm::vec3(0.5f, 0.5f, 0.5f));
-    //m_shader->addUniform("u_ambientLight");
-    //m_shader->setUniformVec3("u_ambientLight", glm::vec3(1,1,1));
     m_counter = 0;
 }
 
@@ -87,10 +85,11 @@ void Game::update() {
     float absSinCounter = abs(sinCounter);
 
     //transform->GetPos().x = sinCounter;
-    //m_transform->getRot().y = sinCounter;
+    m_transform->setPos(glm::vec3(0,0,5));
+    m_transform->getRot().y = sinCounter;
     //transform->GetRot().z = sinCounter;
 
-    m_shader->updateUniforms(m_transform->getProjectedModel(m_camera), m_material);
+    m_shader->updateUniforms(m_transform->getModel(), m_transform->getProjectedModel(m_camera), m_material);
 }
 
 void Game::loadMesh(const std::string& model_path) {

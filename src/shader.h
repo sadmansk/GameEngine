@@ -20,7 +20,7 @@ public:
     void setUniformF(const std::string& name, float value);
     void setUniformVec3(const std::string& name, const glm::vec3& value);
     void setUniformMat4(const std::string& name, const glm::mat4& value);
-    virtual void updateUniforms(const glm::mat4&, const Material*) = 0;
+    virtual void updateUniforms(const glm::mat4&, const glm::mat4&, const Material*) = 0;
     virtual ~Shader();
 
 private:

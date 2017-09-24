@@ -14,7 +14,8 @@ BasicShader::BasicShader() :
     addUniform("u_color");
 }
 
-void BasicShader::updateUniforms(const glm::mat4& proj_matrix,
+void BasicShader::updateUniforms(const glm::mat4& world_matrix,
+        const glm::mat4& proj_matrix,
         const Material* material) {
 
     if (material->getTexture()) {
