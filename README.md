@@ -29,11 +29,11 @@ coming soon.
 - Vertex and Fragment shaders support
 - Textures support
 - Basic Lighting
+- Phong lighting model
+- Material support
 
 ## Roadmap
 These features are planned to be included *very soon*.
-- Phong lighting model
-- Material support
 - Dynamic shaders management
 - Level import and export
 

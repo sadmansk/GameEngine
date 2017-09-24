@@ -20,9 +20,9 @@ uniform sampler2D u_sampler;
 uniform DirectionalLight u_dir_light;
 
 vec4 calcLight(BaseLight base, vec3 dir, vec3 normal) {
-    //calculate attentuation
     float diffuseFactor = dot(normal, -dir);
-    vec4 diffuseColor = vec4(0, 0, 0, 0);
+
+    vec4 diffuseColor = vec4(1, 1, 1, 1);
 
     if (diffuseFactor > 0) {
         diffuseColor = vec4(base.color, 1.0) * base.intensity * diffuseFactor;
@@ -45,7 +45,8 @@ void main() {
     }
 
     vec3 normal = normalize(normal0);
-    total_light += calcDirectionalLight(u_dir_light, normal);
+    //total_light += calcDirectionalLight(u_dir_light, normal);
+    total_light += calcLight(u_dir_light.base, u_dir_light.direction, normal);
 
     frag_color = color * total_light;
 }

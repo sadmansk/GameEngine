@@ -17,6 +17,7 @@
 #include "input.h"
 #include <iostream>
 #include "time.h"
+#include <cmath>
 #include "phong_shader.h"
 
 Game::Game()
@@ -43,6 +44,7 @@ Game::Game()
     m_camera = new Camera(glm::vec3(0.0f, 0.0f, -2.0f), 70.0f, (float)WIDTH/HEIGHT, 1.0f, 100.0f);
 
     m_transform->setScale(glm::vec3(0.5f, 0.5f, 0.5f));
+    m_transform->setPos(glm::vec3(0,0,5));
     m_counter = 0;
 }
 
@@ -81,11 +83,10 @@ void Game::render() {
 void Game::update() {
     m_counter += Time::getDelta();
     //std::cout << counter << std::endl;
-    float sinCounter = m_counter;
+    float sinCounter = sin(m_counter);
     float absSinCounter = abs(sinCounter);
 
-    //transform->GetPos().x = sinCounter;
-    m_transform->setPos(glm::vec3(0,0,5));
+    m_transform->getPos().x = sinCounter;
     m_transform->getRot().y = sinCounter;
     //transform->GetRot().z = sinCounter;
 
