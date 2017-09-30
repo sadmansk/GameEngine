@@ -51,6 +51,9 @@ camera.
 ![Texture support](res/demo/texture.gif)
 Showcasing texture support.
 
+![Phong Lighting](res/demo/phong.gif)
+Phong lighting model.
+
 ## Documentation
 Refer to the [wiki](https://github.com/sadmansk/GameEngine/wiki) for more information.
 Also if you are interested in contributing, follow these [guidelines](https://github.com/sadmansk/GameEngine/wiki/Contributing-to-the-Wiki).

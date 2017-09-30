@@ -38,6 +38,8 @@ private:
     };
 
     void InitMesh(const IndexedModel& model);
+    static void calcNormals(Vertex* vertices, unsigned int num_vertices,
+            unsigned int* indices, unsigned int num_indices);
 
     GLuint m_vertexArrayObject;
     GLuint m_vertexArrayBuffers[NUM_BUFFERS];

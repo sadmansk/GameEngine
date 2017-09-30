@@ -7,7 +7,8 @@
 class PhongShader : public Shader {
 public:
     static PhongShader* getInstance();
-    virtual void updateUniforms(const glm::mat4&, const glm::mat4&, const Material*);
+    virtual void updateUniforms(const glm::mat4&, const glm::mat4&,
+            const Material*, const glm::vec3&);
     void setUniformBaseLight(const std::string&, const BaseLight&);
     void setUniformDirectionalLight(const std::string&, const DirectionalLight&);
     static void setAmbientLight(const glm::vec3&);

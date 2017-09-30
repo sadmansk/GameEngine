@@ -16,7 +16,8 @@ BasicShader::BasicShader() :
 
 void BasicShader::updateUniforms(const glm::mat4& world_matrix,
         const glm::mat4& proj_matrix,
-        const Material* material) {
+        const Material* material,
+        const glm::vec3&) {
 
     if (material->getTexture()) {
         material->bindTexture();

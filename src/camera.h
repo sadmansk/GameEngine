@@ -80,6 +80,10 @@ public:
         m_position += displacement;
     }
 
+    inline glm::vec3 getPos() const {
+        return m_position;
+    }
+
     ~Camera() {};
 
 private:

@@ -90,7 +90,7 @@ void Game::update() {
     m_transform->getRot().y = sinCounter;
     //transform->GetRot().z = sinCounter;
 
-    m_shader->updateUniforms(m_transform->getModel(), m_transform->getProjectedModel(m_camera), m_material);
+    m_shader->updateUniforms(m_transform->getModel(), m_transform->getProjectedModel(m_camera), m_material, m_camera->getPos());
 }
 
 void Game::loadMesh(const std::string& model_path) {

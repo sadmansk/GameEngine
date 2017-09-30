@@ -11,6 +11,7 @@ Mesh::Mesh(Vertex* vertices, unsigned int numVertices, unsigned int* indices, un
     m_drawCount = numVertices; //binding the vertex array object
     glGenVertexArrays(1, &m_vertexArrayObject);
     glBindVertexArray(m_vertexArrayObject);
+    Mesh::calcNormals(vertices, numVertices, indices, numIndices);
 
     // retrieve the data from the vertices
     std::vector<glm::vec3*> posCoords;
@@ -120,4 +121,24 @@ void Mesh::InitMesh(const IndexedModel& model) {
 
 
     glBindVertexArray(0);
+}
+
+void Mesh::calcNormals(Vertex* vertices, unsigned int vertSize, unsigned int* indices, unsigned int indexSize) {
+    for(int i = 0; i < indexSize; i += 3) {
+        int i0 = indices[i];
+        int i1 = indices[i + 1];
+        int i2 = indices[i + 2];
+
+        glm::vec3 v1 = *vertices[i1].getPos() - *vertices[i0].getPos();
+        glm::vec3 v2 = *vertices[i2].getPos() - *vertices[i0].getPos();
+
+        glm::vec3 normal = glm::normalize(glm::cross(v1, v2));
+
+        *vertices[i0].getNormal() = *vertices[i0].getNormal() + normal;
+        *vertices[i1].getNormal() = *vertices[i1].getNormal() + normal;
+        *vertices[i2].getNormal() = *vertices[i2].getNormal() + normal;
+    }
+
+    for(int i = 0; i < vertSize; i++)
+        *vertices[i].getNormal() = glm::normalize(*vertices[i].getNormal());
 }
