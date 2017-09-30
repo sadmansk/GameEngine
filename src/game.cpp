@@ -38,7 +38,7 @@ Game::Game()
 
     //m_mesh = new Mesh("../res/sample_level.obj");
     m_mesh = new Mesh("../res/monkey.obj");
-    m_material = new Material(new Texture("../res/gray.jpg"), new glm::vec3(0, 1, 1));
+    m_material = new Material(new Texture("../res/brown_checker.jpg"), new glm::vec3(1, 1, 1));
 
     m_transform = new Transform();
     m_camera = new Camera(glm::vec3(0.0f, 0.0f, -2.0f), 70.0f, (float)WIDTH/HEIGHT, 1.0f, 100.0f);

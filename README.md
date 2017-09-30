@@ -48,11 +48,8 @@ writing the C Vulkan engine or not:
 Loading in a complete level from a wavefront file. Also showcases the first person
 camera.
 
-![Texture support](res/demo/texture.gif)
-Showcasing texture support.
-
 ![Phong Lighting](res/demo/phong.gif)
-Phong lighting model.
+Phong lighting on textured object.
 
 ## Documentation
 Refer to the [wiki](https://github.com/sadmansk/GameEngine/wiki) for more information.
