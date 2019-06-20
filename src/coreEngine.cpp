@@ -56,7 +56,7 @@ void CoreEngine::render() {
 void CoreEngine::run() {
     m_isRunning = true;
     std::cout << "Engine starting...";
-
+// Declarations / Definitions Start
     int frames = 0;
     long frameCounter = 0;
 
@@ -65,12 +65,16 @@ void CoreEngine::run() {
     //lastTime before running the game loop
     long long lastTime = Time::elapsed();
     double unprocessedTime = 0;
-
+   
+   bool render; 
+   long long startTime;
+   long long passedTime;
+   // Declarations / Definitions End
     while (m_isRunning) {
-        bool render = false;
-        long long startTime = Time::elapsed();
-        long long passedTime = startTime - lastTime;
-        lastTime = startTime;
+         render = false;
+         startTime = Time::elapsed();
+         passedTime = startTime - lastTime;
+         lastTime = startTime;
 
         unprocessedTime += (double)passedTime/SECOND; //store the time in seconds
         frameCounter += passedTime; //store the time in nanoseconds
