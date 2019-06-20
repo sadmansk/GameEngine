@@ -16,7 +16,7 @@
 #include <iostream>
 #include "coreEngine.h"
 
-//main program
+//Entry points
 int main(int argc, char* argv[]) {
     CoreEngine game (TITLE, WIDTH, HEIGHT);
 
