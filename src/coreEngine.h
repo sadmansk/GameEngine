@@ -26,9 +26,9 @@ class CoreEngine
 public:
     CoreEngine(std::string title = TITLE, int width = WIDTH, int height = HEIGHT);
 
-    void start();
-    void stop();
-    void loadMesh(const std::string& model_path);
+    void start(); // Core engine start
+    void stop(); // Core engine stop
+    void loadMesh(const std::string& model_path); // for loading meshes
 
     ~CoreEngine();
 
